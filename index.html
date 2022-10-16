@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="./Css/edtit.css">
+    <link rel="stylesheet" href="./BS4/css/bootstrap.min.css">
+    <script src="./jquery/jquery-3.6.0.min.js"></script>
+    <script src="./BS4/js/bootstrap.bundle.min.js"></script>
+    <script src="./BS4/js/bootstrap.min.js"></script>
+    <script src="./JavaScripts/Register.js"></script>
+    <script src="./JavaScripts/AutoSlide.js"></script>
+    <style>
+        #myBtn {
+            /* display: none; */
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99999999999999999999999999;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        
+        #myBtn:hover {
+            background-color: #555;
+        }
+    </style>
+
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</head>
+
+<body>
+    <header class="row-cols-12 w-100 bg" style="padding: 0 150px; position: fixed; z-index: 999999;">
+
+        <div class="row col-sm-12" id="header">
+            <div class="justify-content-between w-100" id="header2" style="display: flex;">
+                <div class="col-sm-2">
+                    <a href="./index.html" class="  d-flex justify-content-center align-items-center">
+                        <img src="./img/A__3_-removebg-preview.png" alt="" class="w-75">
+                    </a>
+                </div>
+                <div class="d-flex justify-content-between col-sm-6">
+                    <div class="d-flex align-items-center">
+                        <a href="./html/Register.html" class="btn mr-1 dk">
+                            Đăng ký
+                        </a>
+                        <button type="button" class="btn dn" data-toggle="modal" data-target="#modal_LogIn">
+                            Đăng nhập
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal_LogIn" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 style="text-align:center">Đăng nhập</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-warning" type="button">Tài khoản</button>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Username" id="TK" aria-label="Username">
+                                            <span id="erroTK" class="text-danger"></span>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-warning" type="button">Mật khẩu</button>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Password" id="passTK" aria-label="Password" aria-describedby="button-addon2">
+                                            <span class="text-danger" id="erroPassTK"></span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="btnSuccess" class="btn btn-success">Đăng nhập</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="" type="button" class="btn-cart mr-0" data-toggle="modal" data-target="#cart" style="display: inline-block; width: 100px; height: 100%;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-bag-check icon-cart" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg>
+                        <p class="soluongcart"></p>
+                    </button>
+
+                    <div class="alert border-success bg-view" id="cart-con">
+                        <!-- danh sach san pham -->
+                        [ Đang rỗng ]
+                    </div>
+                    </a>
+                    <form class="navbar form-inline nava-search">
+                        <input class=" form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="icon-search" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" fill="currentColor" class="bi bi-search " viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+
+                </div>
+            </div>
+            <ul id="header-menu" class="menu d-flex align-items-center w-100" style="list-style: none; justify-content: space-around;">
+                <li class="nav-item">
+                    <a class="nav-link " href="index.html">TRANG CHỦ</a>
+                </li>
+
+
+                <li class="nav-item main-menu">
+                    <a class="nav-link dropdown-toggle">THƯƠNG HIỆU</a>
+                    <div class="sub-menu">
+                        <a class="dropdown-item" href="#SONY" id="nhan-SONY">SONY</a>
+                        <a class="dropdown-item" href="#JBL" id="nhan-JBL">JBL</a>
+                        <a class="dropdown-item" href="#SAMSUNG" id="nhan-SAMSUNG">SAMSUNG</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#All" id="nhan-all">Tất cả sản phẩm</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./html/Insurance.html">CHÍNH SÁCH BẢO HÀNH</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./html/GioiThieu.html">GIỚI THIỆU</a>
+                </li>
+
+            </ul>
+
+            <script>
+                var prevScrollpos = window.pageYOffset;
+                window.onscroll = function() {
+                    var currentScrollPos = window.pageYOffset;
+                    if (prevScrollpos > currentScrollPos) {
+                        document.getElementById("header2").style.display = 'flex';
+                    } else {
+                        document.getElementById("header2").style.display = 'none';
+                    }
+                    prevScrollpos = currentScrollPos;
+                }
+            </script>
+
+        </div>
+    </header>
+    <section id="section" class="container bg-section">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./img/SlideShowSale1.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/MHDDesktop-2-1200x300.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/week-800-200-800x200-2.png" class="d-block w-100" alt="...">
+                </div>
+                <script>
+                    var myIndex = 0; 
+                    carousel();
+                    function carousel() {
+                        var i;
+                        var x = document.getElementsByClassName("mySlides");
+                        for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";  
+                        }
+                        myIndex++;
+                        if (myIndex > x.length) {myIndex = 1}    
+                        x[myIndex-1].style.display = "block";  
+                        setTimeout(carousel, 2); // Change image every 2 seconds
+                        }
+                </script>
+            </div>
+            <button class="carousel-control-prev icon-next" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </button>
+            <button class="carousel-control-next icon-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </button>
+        </div>
+        <h3 class="alert mt-3 nhan-style" id="JBL">SAMSUNG</h3>
+        <div class="container" style="margin-top: 20px;" id="list_CT">
+            <div class="row row-cols-5">
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/jbl4.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa thanh Samsung MX-ST50B</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">9.490.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 240W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/jbl5.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa thanh Samsung HW-A450</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">3.490.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 300W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/jbl1.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa thanh Samsung HW-550</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">4.490.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 410W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/jbl2.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa tháp Samsung MX-T50/XV</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">5.990.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 500W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/jbl3.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa thanh Samsung HW-Q950A</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">33.990.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 616W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+            </div>
+        </div>
+
+        <h3 class="alert nhan-style mt-3" id="SONY">SONY</h3>
+        <div class="container" style="margin-top: 20px;" id="list_CT">
+            <div class="row row-cols-5">
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/sony1.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa thanh soundbar Sony HT-S350</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">4.670.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 320W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/sony2.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth Sony SRS-XB13</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">1.290.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 5W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/sony3.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Dàn âm thanh Sony HT-S20R</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">6.490.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 400W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/sony4.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth Sony SRS-XB01</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">680.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 3W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/sony5.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth Sony SRS-XE200</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">2.950.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: Chưa công bố</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+
+
+            </div>
+        </div>
+
+        <h3 class="alert nhan-style mt-3" id="SAMSUNG">JBL</h3>
+        <div class="container" style="margin-top: 20px;" id="list_CT">
+            <div class="row row-cols-5">
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/samsung1.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth JBL Boombox 2 </h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">9.690.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 80w</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+                    </ul>
+                </a>
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/samsung2.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Cặp Loa Karaoke JBL MK 12 </h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">15.500.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 300-500W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/samsung3.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth JBL Charge 5</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">3.990.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 40W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/samsung4.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth JBL Partybox 100</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">9.500.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 160w</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/samsung5.png" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Thiết bị khuếch đại âm tần JBL BEYOND1</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">16.900.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 360-720w</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+                    </ul>
+                </a>
+            </div>
+        </div>
+
+        <h3 class="alert nhan-style mt-3" id="All">TẤT CẢ SẢN PHẨM</h3>
+        <div class="container" style="margin-top: 20px;" id="list_CT">
+            <div class="row row-cols-5">
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/jbl4.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa thanh Samsung MX-ST50B</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">9.490.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 240W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/jbl5.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa thanh Samsung HW-A450</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">3.490.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 300W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/jbl1.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa thanh Samsung HW-550</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">4.490.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 410W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/jbl2.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa tháp Samsung MX-T50/XV</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">5.990.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 500W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/jbl3.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa thanh Samsung HW-Q950A</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">33.990.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 616W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/sony1.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa thanh soundbar Sony HT-S350</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">4.670.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 320W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/sony2.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth Sony SRS-XB13</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">1.290.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 5W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/sony3.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Dàn âm thanh Sony HT-S20R</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">6.490.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 400W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/sony4.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth Sony SRS-XB01</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">680.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 3W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/sony5.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth Sony SRS-XE200</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">2.950.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: Chưa công bố</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/samsung1.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth JBL Boombox 2 </h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">9.690.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 80w</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+                    </ul>
+                </a>
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/samsung2.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Cặp Loa Karaoke JBL MK 12 </h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">15.500.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 300-500W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/samsung3.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth JBL Charge 5</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">3.990.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 40W</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+
+
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/samsung4.jpg" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Loa Bluetooth JBL Partybox 100</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">9.500.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 160w</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+                    </ul>
+                </a>
+                <a href="./html/ChiTietSanPham.html" class="col border text-decoration-none">
+                    <img src="./img/sony/samsung5.png" class="w-100 alert" alt="">
+                    <h6 class="alert alert-light " style="font-size: 14px;">Thiết bị khuếch đại âm tần JBL BEYOND1</h6>
+                    <p href="" style="text-decoration: none;" class="btn btn-outline-success">16.900.000₫</p>
+                    <ul style="font-size: 12px;" class="alert">
+                        <li>Công suất: 360-720w</li>
+                        <li>Thời gian dùng liên tục: 100 ngày</li>
+                        <li> Online giá rẻ hơn 5%</li>
+                    </ul>
+                </a>
+                 
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Về trang chủ"><svg xmlns="http://www.w3.org/2000/svg"
+                width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                <path fill-rule="evenodd"
+                    d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+            </svg>
+        </button>
+
+
+    </section>
+    <footer class="container col-sm-12 bg-footer">
+        <div class="container">
+            <div class="row text-left">
+                <div class="col btn">
+                    <h6 class="alert" style="border-bottom: 1px solid black;">THƯƠNG HIỆU</h6>
+                    <ul class="text-left nav-link" style="list-style: none;">
+                        <li class="text-left"><a href="./index.html" class="nav-link text-dark">SONY</a></li>
+                        <li class="text-left"><a href="./index.html" class="nav-link text-dark">SAMSUNG</a></li>
+                        <li class="text-left"><a href="./index.html" class="nav-link text-dark">JBL</a></li>
+                        <li class="text-left"><a href="" class="nav-link text-dark">Tất cả thương hiệu</a></li>
+                    </ul>
+                </div>
+                <div class="col btn">
+                    <h6 class="alert" style="border-bottom: 1px solid black;">GIỚI THIỆU THÀNH VIÊN VÀ WEBSITE</h6>
+                    <ul class="text-left nav-link" style="list-style: none;">
+                        <li class="text-left"><a href="./html/GioiThieu.html" class="nav-link text-dark">Thành viên</a>
+                        </li>
+                        <li class="text-left"><a href="./html/GioiThieu.html" class="nav-link text-dark">Website</a>
+                        </li>
+                        <li class="text-left"><a href="./html/GioiThieu.html" class="nav-link text-dark">Giảng viên</a>
+                        </li>
+                        <li class="text-left"><a href="./html/GioiThieu.html" class="nav-link text-dark">Header</a></li>
+                        <li class="text-left"><a href="./html/GioiThieu.html" class="nav-link text-dark">Section</a>
+                        </li>
+                        <li class="text-left"><a href="./html/GioiThieu.html" class="nav-link text-dark">Footer</a></li>
+
+                    </ul>
+                </div>
+                <div class="col btn ">
+                    <h6 class="alert" style="border-bottom: 1px solid black;">CHÍNH SÁCH BẢO HÀNH</h6>
+                    <ul class="text-left" style="list-style: none;">
+                        <li class="text-left"><a href="./html/Insurance.html" class="nav-link text-dark">Đổi mới miễn
+                                phí</a></li>
+                        <li class="text-left"><a href="./html/Insurance.html" class="nav-link text-dark">Bảo hành 12
+                                tháng</a></li>
+                        <li class="text-left"><a href="./html/Insurance.html" class="nav-link text-dark">Chính sách bảo
+                                hành</a></li>
+                    </ul>
+                </div>
+                <div class="col btn ">
+                    <h6 class="alert" style="border-bottom: 1px solid black;">TRANG CHỦ</h6>
+                    <ul class="text-left" style="list-style: none;">
+                        <li class="text-left"><a href="./index.html" class="nav-link text-dark">Đăng ký</a></li>
+                        <li class="text-left"><a href="./index.html" class="nav-link text-dark">Đăng nhập</a></li>
+                        <li class="text-left"><a href="./index.html" class="nav-link text-dark">Tìm kiếm</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="alert text-center" style="color: black; font-weight: lighter;">© 2022 - Bản Quyền Thuộc Về Lý Nam Kha</p>
+
+    </footer>
+    <!--Cart modal-->
+    <div class="modal fade" id="cart" style="z-index: 999999" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Giỏ hàng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <table class="show-cart table">
+
+                    </table>
+                    <div>Tổng tiền: <span class="total-cart"></span></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <a href="./html/GioHang.html"><button type="button" class="btn btn-primary">Đặt ngay</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./JavaScripts/cart.js"></script>
+</body>
+
+</html>
